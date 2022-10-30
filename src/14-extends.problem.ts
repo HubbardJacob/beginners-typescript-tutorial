@@ -6,25 +6,26 @@ import { Equal, Expect } from "./helpers/type-utils";
  * make it more DRY?
  */
 
-interface User {
+interface Node {
   id: string;
+}
+
+interface User extends Node {
   firstName: string;
   lastName: string;
 }
 
-interface Post {
-  id: string;
+interface Post extends Node {
   title: string;
   body: string;
 }
 
-interface Comment {
-  id: string;
+interface Comment extends Node {
   comment: string;
 }
 
 type tests = [
   Expect<Equal<User, { id: string; firstName: string; lastName: string }>>,
   Expect<Equal<Post, { id: string; title: string; body: string }>>,
-  Expect<Equal<Comment, { id: string; comment: string }>>,
+  Expect<Equal<Comment, { id: string; comment: string }>>
 ];
